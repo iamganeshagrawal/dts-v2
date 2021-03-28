@@ -1,0 +1,85 @@
+@hostname=127.0.0.1
+@port=5000
+@host={{hostname}}:{{port}}
+@version=v0.1
+@apiUrl=http://{{host}}/api/{{version}}
+
+###
+# Check API Live or Not
+###
+GET {{apiUrl}}
+
+###
+// Section EndPoint
+###
+
+###
+# Get all sections list (SectionController.getAll)
+###
+GET {{apiUrl}}/sections
+
+###
+# Get all sections By Type (SectionController.getAllByType)
+###
+GET {{apiUrl}}/sections/from
+
+###
+# Get a section By ID (SectionController.getOneById)
+###
+GET {{apiUrl}}/section/4
+
+###
+# Create a section (SectionController.createOne)
+# Payload [Content-Type: application/json]
+# {
+#    "name": "From 4",
+#    "type": "from
+# }
+###
+POST {{apiUrl}}/section
+Content-Type: application/json
+
+{
+    "name": "From 4",
+    "type": "from"
+}
+
+###
+# Delete a section By ID (SectionController.deleteOneById)
+###
+DELETE  {{apiUrl}}/section/10
+
+###
+# Get all available types for section (SectionController.availableTypes)
+###
+GET {{apiUrl}}/section/types
+
+###
+// DueLimit EndPoint
+###
+
+###
+# Get all DueLimit list (DueLimitController.getAll)
+###
+GET {{apiUrl}}/duelimits
+
+
+###
+# Create a DueLimit (DueLimitController.createOne)
+# Payload [Content-Type: application/json]
+# {
+#    "days": 3
+# }
+###
+POST {{apiUrl}}/duelimit
+Content-Type: application/json
+
+{
+    "days": 7
+}
+
+
+###
+# Delete a duelimit By ID (DueLimitController.deleteOneById)
+###
+DELETE  {{apiUrl}}/duelimit/4
